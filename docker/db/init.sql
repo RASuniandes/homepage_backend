@@ -1,0 +1,28 @@
+CREATE USER IF NOT EXISTS 'ras_user'@'%' IDENTIFIED BY 'ABCDABC4';
+
+GRANT ALL PRIVILEGES ON defaultdb.* TO 'ras_user'@'%';
+
+FLUSH PRIVILEGES;
+
+DROP TABLE IF EXISTS members;
+
+CREATE TABLE members (
+  id VARCHAR(36) PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL UNIQUE,
+  role VARCHAR(100),
+  major VARCHAR(255) NOT NULL,
+  double_major VARCHAR(255),
+  u_code VARCHAR(50),
+  phone_number VARCHAR(20),
+  project VARCHAR(255),
+  photo VARCHAR(500),
+  contributions JSON,
+  skills JSON,
+  goals JSON,
+  is_accepted BOOLEAN DEFAULT FALSE,
+  is_in_council BOOLEAN DEFAULT FALSE,
+  join_date DATETIME NOT NULL,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
