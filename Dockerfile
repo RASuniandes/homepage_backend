@@ -18,6 +18,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   libglib2.0-0 \
   curl \
   gcc \
+  default-libmysqlclient-dev \
+  pkg-config \
   && rm -rf /var/lib/apt/lists/*
 
 # =====================================================
@@ -37,8 +39,8 @@ COPY . .
 ENV PYTHONUNBUFFERED=1
 ENV PORT=5000
 
-
-EXPOSE 5000
+# Change 5001 to 80
+EXPOSE 5001
 
 # =====================================================
 # HEALTHCHECK
