@@ -21,11 +21,7 @@ services:
         condition: service_healthy
     networks:
       - ras_net
-      - dokploy-network
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.api.rule=Host(`api.rasuniandes.org`)"
-      - "traefik.http.services.api.loadbalancer.server.port=5001"
+
   db:
     image: mysql:8.0.35
     container_name: ras-mysql
@@ -46,7 +42,6 @@ services:
       - ./db/init_utf8.sql:/docker-entrypoint-initdb.d/init_utf8.sql:ro
     networks:
       - ras_net
-      - dokploy-network
     restart: unless-stopped
     healthcheck:
       test: ["CMD-SHELL", "mysqladmin ping -h localhost -uroot -p$${MYSQL_ROOT_PASSWORD} --silent"]
@@ -66,7 +61,6 @@ services:
       - "6379:6379"
     networks:
       - ras_net
-      - dokploy-network
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "redis-cli", "ping"]
@@ -85,5 +79,3 @@ volumes:
 networks:
   ras_net:
     driver: bridge
-  dokploy-network:
-    external: true

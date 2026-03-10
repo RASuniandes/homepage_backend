@@ -1,7 +1,9 @@
 annotated-doc==0.0.4
 annotated-types==0.7.0
 anyio==4.12.1
+certifi==2026.2.25
 cffi==2.0.0
+charset-normalizer==3.4.5
 click==8.3.1
 cryptography==46.0.5
 dnspython==2.8.0
@@ -18,9 +20,10 @@ pydantic_core==2.41.5
 PyMySQL==1.1.2
 python-dotenv==1.2.2
 python-multipart==0.0.22
+requests==2.32.5
 SQLAlchemy==2.0.48
 starlette==0.52.1
 typing-inspection==0.4.2
 typing_extensions==4.15.0
+urllib3==2.6.3
 uvicorn==0.41.0
-mysqlclient==2.2.4
