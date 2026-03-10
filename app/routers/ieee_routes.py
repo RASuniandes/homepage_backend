@@ -12,7 +12,7 @@ async def get_ieee_events(
   page: int = Query(1, ge=1),
   published: bool = Query(True),
   title: str = Query(None),
-  location_type: str = Query(None, regex="^(physical|virtual|hybrid)$"),
+  location_type: str = Query(None),
   cancelled: bool = Query(False),
   cost: bool = Query(None),
   start_time_after: str = Query(None),  # ISO 8601 format
