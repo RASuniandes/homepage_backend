@@ -39,6 +39,7 @@ class Settings(BaseSettings):
     # ── CORS ───────────────────────────────────────────
     CORS_ORIGINS: list[str] = [
         "https://rasuniandes.org",
+        "http://rasuniandes.org",
         "http://localhost:5173",
         "http://localhost:3000",
     ]

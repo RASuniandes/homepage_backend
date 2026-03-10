@@ -33,22 +33,12 @@ RUN pip install --no-cache-dir -r requirements.txt
 # =====================================================
 COPY . .
 
-# =====================================================
-# ENVIRONMENT
-# =====================================================
 ENV PYTHONUNBUFFERED=1
-ENV PORT=5000
+ENV PORT=5001
 
-# Change 5001 to 80
 EXPOSE 5001
 
-# =====================================================
-# HEALTHCHECK
-# =====================================================
 HEALTHCHECK --interval=30s --timeout=10s --retries=3 \
-  CMD curl -f http://localhost:5000/health || exit 1
+  CMD curl -f http://localhost:${PORT}/health || exit 1
 
-# =====================================================
-# START
-# =====================================================
-CMD ["uvicorn", "run:app", "--host", "0.0.0.0", "--port", "5001"]
+CMD ["sh", "-c", "uvicorn run:app --host 0.0.0.0 --port ${PORT}"]

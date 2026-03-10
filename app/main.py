@@ -76,6 +76,7 @@ def create_app() -> FastAPI:
         return response
     # ── Routers ──────────────────────────────────────
     app.get("/")(lambda: {"message": "Welcome to the Homepage Backend API!"})
+    app.get("/health")(lambda: {"status": "ok"})
     # Image uploads 
 
     register_routers(app)
